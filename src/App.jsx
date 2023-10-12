@@ -1,7 +1,9 @@
+import Route from "./router/Route"
+
 function App() {
 
   return (
-    <div className="text-violet-500">NightSky</div>
+    <Route />
   )
 }
 
