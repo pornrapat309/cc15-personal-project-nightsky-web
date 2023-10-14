@@ -1,10 +1,10 @@
-import RegisterContent from "../features/auth/RegisterContent";
+import LoginAndRegisterContent from "../features/auth/LoginAndRegisterContent";
 import RegisterForm from "../features/auth/RegisterForm";
 
 export default function RegisterPage () {
     return (
-        <div className="mx-10 flex flex-col items-center gap-44 min-[900px] min-[900px]:flex-row min-[900px]:justify-between min-[900px]:items-start min-[1075px]:justify-center">
-            <RegisterContent />
+        <div className="mx-10 pt-2 flex justify-evenly items-center h-[70vh]">
+            <LoginAndRegisterContent />
             <RegisterForm />
         </div>
     )

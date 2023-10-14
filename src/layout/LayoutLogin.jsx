@@ -3,7 +3,7 @@ import Header from './Header';
 
 export default function LayoutLogin() {
   return (
-    <div className="bg-[url('/src/assets/bg.jpg')] bg-cover bg-center w-full h-screen">
+    <div className="bg-[url('/src/assets/bg.jpg')] w-screen h-screen bg-cover bg-center">
       <Header />
       <Outlet />
     </div>
