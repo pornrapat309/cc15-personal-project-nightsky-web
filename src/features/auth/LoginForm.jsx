@@ -4,6 +4,9 @@ import { useState } from "react";
 import Joi from 'joi';
 import InputErrorMessage from "./InputErrorMessage";
 import { useAuth } from "../../hooks/use-auth";
+import LoginFormContent from "./LoginFormContent";
+import { FiMail } from "react-icons/fi";
+import { RiLockPasswordLine } from "react-icons/ri";
 
 const loginSchema = Joi.object({
     emailOrMobileOrUsername: Joi.string().required(),
@@ -52,16 +55,16 @@ export default function LoginForm() {
 
     return (
         <form 
-        className="grid gap-7 text-white"
+        className="grid gap-7 w-96 text-white"
         onSubmit={handleSubmitForm}
         >
-            <h2 className="pb-2 text-xl font-medium text-start">Sign in</h2>
-            <h6 className="pb-2 font-medium text-start">If you don't have an accouct register you can Register here!</h6>
+            <LoginFormContent />
             <LoginInput
             placeholder="Enter your mobile number username or email"
             value={input.emailOrMobileOrUsername}
             onChange={e => setInput({...input, emailOrMobileOrUsername: e.target.value})}
             name='emailOrMobileOrUsername'
+            icon={<FiMail />}
             hasError={error.emailOrMobileOrUsername}
             />
             {error.emailOrMobileOrUsername && <InputErrorMessage message={error.emailOrMobileOrUsername}/>}
@@ -71,6 +74,7 @@ export default function LoginForm() {
             value={input.password}
             onChange={e => setInput({...input, password: e.target.value})}
             name='password'
+            icon={<RiLockPasswordLine />}
             hasError={error.password}
             />
             {error.password && <InputErrorMessage message={error.password}/>}

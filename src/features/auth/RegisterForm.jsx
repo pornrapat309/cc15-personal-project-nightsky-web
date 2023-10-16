@@ -5,6 +5,9 @@ import Joi from 'joi';
 import InputErrorMessage from "./InputErrorMessage";
 import {useAuth} from "../../hooks/use-auth";
 import RegisterFormContent from "./RegisterFormContent";
+import { FiMail, FiUser } from "react-icons/fi";
+import { RiLockPasswordLine } from "react-icons/ri";
+
 
 const registerSchema = Joi.object({
     fullName: Joi.alternatives([
@@ -68,7 +71,10 @@ export default function RegisterForm() {
     };
 
     return (
-        <form className="grid gap-3 text-white" onSubmit={handleSubmitForm}>
+        <form 
+        className="grid gap-3 w-96 text-white" 
+        onSubmit={handleSubmitForm}
+        >
             <RegisterFormContent />
             <RegisterInput
             type="text"
@@ -76,46 +82,56 @@ export default function RegisterForm() {
             value={input.emailOrMobile}
             onChange={handleChangeInput}
             name='emailOrMobile'
+            icon={<FiMail />}
             hasError={error.emailOrMobile}
             />
             {error.emailOrMobile && <InputErrorMessage message={error.emailOrMobile}/>}
+
             <RegisterInput
             type="text"
             placeholder="Full Name"
             value={input.fullName}
             onChange={handleChangeInput}
             name='fullName'
+            icon={<FiUser />}
             hasError={error.fullName}
             />
             {error.fullName && <InputErrorMessage message={error.fullName}/>}
+
             <RegisterInput
             type="text"
             placeholder="Username"
             value={input.username}
             onChange={handleChangeInput}
             name='username'
+            icon={<FiUser />}
             hasError={error.username}
             />
             {error.username && <InputErrorMessage message={error.username}/>}
+
             <RegisterInput
             type="password"
             placeholder="Password"
             value={input.password}
             onChange={handleChangeInput}
             name='password'
+            icon={<RiLockPasswordLine />}
             hasError={error.password}
             />
             {error.password && <InputErrorMessage message={error.password}/>}
+
             <RegisterInput
             type="password"
             placeholder="Confirm password"
             value={input.confirmPassword}
             onChange={handleChangeInput}
             name='confirmPassword'
+            icon={<RiLockPasswordLine />}
             hasError={error.confirmPassword}
             />
             {error.confirmPassword && <InputErrorMessage message={error.confirmPassword}/>}
+
             <RegisterButton />
         </form>
     )
-}
+};
