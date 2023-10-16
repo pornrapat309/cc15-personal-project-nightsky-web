@@ -6,8 +6,7 @@ export default function RegisterInput(
         onChange, 
         name,
         hasError
-    }
-    ) {
+    }) {
     return (
             <input 
             type={type}

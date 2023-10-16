@@ -4,6 +4,7 @@ import { useState } from "react";
 import Joi from 'joi';
 import InputErrorMessage from "./InputErrorMessage";
 import {useAuth} from "../../hooks/use-auth";
+import RegisterFormContent from "./RegisterFormContent";
 
 const registerSchema = Joi.object({
     fullName: Joi.alternatives([
@@ -57,13 +58,18 @@ export default function RegisterForm() {
         setError({});
         register(input).catch(err => {
             console.log(err);
+            if (err.response.data.emailOrMobileOrUsernameExist) {
+                setError({
+                    emailOrMobile: 'emailOrMobile or username is already in use',
+                    username: 'emailOrMobile or username is already in use'
+                });
+            }
         });
     };
 
     return (
         <form className="grid gap-3 text-white" onSubmit={handleSubmitForm}>
-            <h2 className="pb-2 text-xl font-medium text-start">Sign up</h2>
-            <h6 className="pb-2 font-medium text-start">If you have an accouct register you can Login here!</h6>
+            <RegisterFormContent />
             <RegisterInput
             type="text"
             placeholder="Mobile Number or Email"
