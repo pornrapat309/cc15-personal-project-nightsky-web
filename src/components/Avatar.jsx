@@ -1,5 +1,9 @@
-export default function Avatar() {
+import defaultImage from '../assets/blank.png';
+
+export default function Avatar({className= 'h-7'}) {
+    const defaultClass = 'rounded-full aspect-square';
+    const classes = defaultClass + ' ' + className;
     return (
-        <>Avatar</>
+        <img src={defaultImage} alt="user" className={classes}/>
     )
-}
+};

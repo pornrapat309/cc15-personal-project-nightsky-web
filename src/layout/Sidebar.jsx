@@ -11,7 +11,7 @@ export default function Sidebar() {
                 </Link>
             </div>
                 <Menu />
-            <div className="px-3 flex flex-col justify-end">
+            <div className="px-3 mb-5 flex flex-col self-end">
                 <Logout />
             </div>
         </div>

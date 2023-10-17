@@ -24,7 +24,9 @@ export default function Menu() {
             <MenuItem 
                 Icon={AiOutlinePlusCircle} 
                 title='Create'/>
-            <MenuProfile />
+            <MenuProfile 
+                active={pathname === '/profile/:profileId'}
+            />
         </div>
     )
 };
