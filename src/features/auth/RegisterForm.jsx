@@ -8,12 +8,8 @@ import RegisterFormContent from "./RegisterFormContent";
 import { FiMail, FiUser } from "react-icons/fi";
 import { RiLockPasswordLine } from "react-icons/ri";
 
-
 const registerSchema = Joi.object({
-    fullName: Joi.alternatives([
-        Joi.string().trim(),
-        ''
-    ]),
+    fullName: Joi.string().trim().empty(''),
     username: Joi.string().trim().required(),
     emailOrMobile: Joi.alternatives([
         Joi.string().email({tlds: false}),
@@ -61,10 +57,13 @@ export default function RegisterForm() {
         setError({});
         register(input).catch(err => {
             console.log(err);
-            if (err.response.data.emailOrMobileOrUsernameExist) {
+            if (err.response.data.emailOrMobileExist) {
                 setError({
-                    emailOrMobile: 'emailOrMobile or username is already in use',
-                    username: 'emailOrMobile or username is already in use'
+                    emailOrMobile: err.response.data.message
+                });
+            } else if (err.response.data.usernameExist) {
+                setError({
+                    username: err.response.data.message
                 });
             }
         });
