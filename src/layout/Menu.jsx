@@ -1,9 +1,9 @@
 import MenuItem from "./MenuItem";
 import { PiHouseFill } from "react-icons/pi";
-import { BiSearch } from "react-icons/bi";
 import { AiOutlinePlusCircle, AiOutlineStar } from "react-icons/ai";
 import { useLocation } from "react-router-dom";
 import MenuProfile from "./MenuProfile";
+import Dropdown from "./Dropdown";
 
 export default function Menu() {
     const {pathname} = useLocation();
@@ -15,9 +15,7 @@ export default function Menu() {
                 title='Home'
                 active={pathname === '/'}
                 />
-            <MenuItem 
-                Icon={BiSearch} 
-                title='Search'/>
+            <Dropdown />
             <MenuItem 
                 Icon={AiOutlineStar} 
                 title='Notification'/>
