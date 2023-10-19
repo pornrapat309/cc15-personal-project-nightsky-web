@@ -10,7 +10,7 @@ export default function EditProfilePage () {
             <EditAvatar />
             <EditForm />
             <PrivateInformation />
-            <ActionButton className='font-semibold'>Submit</ActionButton>
+            <ActionButton>Submit</ActionButton>
         </div>
     )
 };

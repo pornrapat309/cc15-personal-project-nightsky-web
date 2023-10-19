@@ -1,9 +1,7 @@
-import defaultImage from '../assets/blank.png';
+import defaultImage from "../assets/blank.png";
 
-export default function Avatar({className= 'h-7'}) {
-    const defaultClass = 'rounded-full aspect-square';
-    const classes = defaultClass + ' ' + className;
-    return (
-        <img src={defaultImage} alt="user" className={classes}/>
-    )
-};
+export default function Avatar({ className = "h-7", src }) {
+  const defaultClass = "rounded-full aspect-square";
+  const classes = defaultClass + " " + className;
+  return <img src={src || defaultImage} alt="user" className={classes} />;
+}

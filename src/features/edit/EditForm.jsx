@@ -1,4 +1,9 @@
+import { useAuth } from "../../hooks/use-auth"
+
 export default function EditInfo() {
+
+    const {authUser} = useAuth();
+
     return (
         <form className="flex flex-col gap-4">
             <div className="flex gap-4">
@@ -9,8 +14,8 @@ export default function EditInfo() {
                 />
             </div>
             <div className="flex gap-4">
-                <span>Username</span>
-                <span>user</span>
+                <label>Username</label>
+                <span>{authUser.username}</span>
             </div>
         </form>
     )
