@@ -1,6 +1,9 @@
 import { useRef } from "react";
 
 export default function EditAvatarForm({setFile, onClose}) {
+
+  
+
     const inputEl = useRef(null);
   return (
     <div className="font-semibold cursor-pointer">
@@ -12,12 +15,14 @@ export default function EditAvatarForm({setFile, onClose}) {
                 if (e.target.files[0]) {
                     setFile(e.target.files[0])
                 }
-                onClose()
+                onClose();
+                
             }}
             
             />
       <div  className="flex justify-center border-b border-gray-400 min-w-full text-blue-500 p-3" 
             onClick={() => inputEl.current.click()}
+            
             >
         Upload Photo
       </div>

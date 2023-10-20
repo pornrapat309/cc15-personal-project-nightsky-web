@@ -14,7 +14,7 @@ export default function UserInfo() {
                 </Link>
             </div>
             <FollowInfo />
-            <div>Full name</div>
+            <div>{authUser.fullName}</div>
         </div>
     )
 };

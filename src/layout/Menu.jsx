@@ -4,9 +4,13 @@ import { AiOutlinePlusCircle, AiOutlineStar } from "react-icons/ai";
 import { useLocation } from "react-router-dom";
 import MenuProfile from "./MenuProfile";
 import Dropdown from "./Dropdown";
+import { useAuth } from "../hooks/use-auth";
 
 export default function Menu() {
   const { pathname } = useLocation();
+
+  const {authUser} = useAuth();
+
   return (
     <div className="px-3 flex flex-col justify-between">
       <MenuItem
@@ -18,7 +22,7 @@ export default function Menu() {
       <Dropdown />
       <MenuItem Icon={AiOutlineStar} title="Notification" />
       <MenuItem Icon={AiOutlinePlusCircle} title="Create" />
-      <MenuProfile active={pathname === "/profile/:profileId"} />
+      <MenuProfile active={pathname === `/profile/${authUser.id}`} />
     </div>
   );
 }
