@@ -8,13 +8,18 @@ import axios from "../config/axios";
 export default function ProfilePage() {
   const [profileUser, setProfileUser] = useState({});
   const [statusWithAuthUser, setStatusWithAuthUser] = useState('');
+  const [countFollower, setCountFollower] = useState([]);
+  const [countFollowing, setCountFollowing] = useState([]);
   const { profileId } = useParams();
+
   useEffect(() => {
     axios
       .get(`/user/${profileId}`)
       .then((res) => {
         setProfileUser(res.data.user)
         setStatusWithAuthUser(res.data.status);
+        setCountFollower(res.data.countFollower)
+        setCountFollowing(res.data.countFollowing)
       })
       .catch((err) => console.log(err));
   }, [profileId]);
@@ -22,7 +27,13 @@ export default function ProfilePage() {
     <div className="flex flex-1 flex-col items-center justify-between">
       {profileUser ? (
         <>
-          <ProfileInfo profileUser={profileUser} statusWithAuthUser={statusWithAuthUser} setStatusWithAuthUser={setStatusWithAuthUser} />
+          <ProfileInfo 
+            profileUser={profileUser} 
+            statusWithAuthUser={statusWithAuthUser} 
+            setStatusWithAuthUser={setStatusWithAuthUser} 
+            countFollower={countFollower}
+            countFollowing={countFollowing}
+            />
           <ProfileContent />
         </>
       ) : (

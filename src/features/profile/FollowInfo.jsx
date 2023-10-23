@@ -1,9 +1,10 @@
-export default function FollowInfo() {
+export default function FollowInfo({countFollower, countFollowing}) {
+
     return (
         <div className="flex justify-between ">
             <div>0 Posts</div>
-            <div>0 Follows</div>
-            <div>0 Following</div>
+            <div className="cursor-pointer">{countFollower} Followers</div>
+            <div className="cursor-pointer">{countFollowing} Following</div>
         </div>
     )
 };

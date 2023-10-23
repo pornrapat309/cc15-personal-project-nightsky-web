@@ -5,7 +5,7 @@ import FollowingAction from "./FollowingAction";
 import FollowerAction from "./FollowerAction";
 import RelationshipAction from "./RelationshipAction";
 
-export default function UserInfo({ profileUser, statusWithAuthUser, setStatusWithAuthUser }) {
+export default function UserInfo({ profileUser, statusWithAuthUser, setStatusWithAuthUser, countFollower, countFollowing }) {
 
     const mappingObj = {
         'AUTH_USER': <AuthAction />,
@@ -21,7 +21,10 @@ export default function UserInfo({ profileUser, statusWithAuthUser, setStatusWit
         <div className="text-xl">{profileUser.username}</div>
         {mappingObj[statusWithAuthUser]}
       </div>
-      <FollowInfo />
+      <FollowInfo 
+        countFollower={countFollower}
+        countFollowing={countFollowing}
+      />
       <div>{profileUser.fullName}</div>
     </div>
   );
