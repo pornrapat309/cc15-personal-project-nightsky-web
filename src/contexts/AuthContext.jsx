@@ -47,6 +47,11 @@ export default function AuthContextProvider({children}) {
         setAuthUser({...authUser, ...res.data});
     };
 
+    // const updateProfileFullName = async data => {
+    //     const res = await axios.patch('/user', data);
+    //     setAuthUser({...authUser, ...res.data});
+    // };
+
 
     return (
         <AuthContext.Provider value={
@@ -56,7 +61,8 @@ export default function AuthContextProvider({children}) {
                 initialLoading,
                 register,
                 logout,
-                updateProfileImage
+                updateProfileImage,
+                // updateProfileFullName
             }
         }>{children}</AuthContext.Provider>
     )

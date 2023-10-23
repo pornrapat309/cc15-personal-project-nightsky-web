@@ -1,15 +1,12 @@
 import Avatar from "../../components/Avatar";
-import { useAuth } from "../../hooks/use-auth";
 import UserInfo from "./UserInfo";
 
-export default function ProfileInfo() {
-
-  const {authUser} = useAuth();
+export default function ProfileInfo({profileUser, statusWithAuthUser, setStatusWithAuthUser}) {
 
   return (
     <div className="flex justify-center gap-20 w-full py-6">
-      <Avatar className="h-40" src={authUser.profileImage}/>
-      <UserInfo />
+      <Avatar className="h-40" src={profileUser.profileImage}/>
+      <UserInfo profileUser={profileUser} statusWithAuthUser={statusWithAuthUser} setStatusWithAuthUser={setStatusWithAuthUser}/>
     </div>
   );
 }
