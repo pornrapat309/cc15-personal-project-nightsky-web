@@ -1,15 +1,15 @@
 import { useParams } from "react-router-dom";
 import ProfileContent from "../features/profile/ProfileContent";
 import ProfileInfo from "../features/profile/ProfileInfo";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "../config/axios";
 
 export default function ProfilePage() {
   const [profileUser, setProfileUser] = useState({});
   const [statusWithAuthUser, setStatusWithAuthUser] = useState('');
-  const [countFollower, setCountFollower] = useState([]);
-  const [countFollowing, setCountFollowing] = useState([]);
+  const [follower, setFollower] = useState([]);
+  const [following, setFollowing] = useState([]);
+  // const [followList, setFollowList] = useState([]);
   const { profileId } = useParams();
 
   useEffect(() => {
@@ -17,12 +17,14 @@ export default function ProfilePage() {
       .get(`/user/${profileId}`)
       .then((res) => {
         setProfileUser(res.data.user)
-        setStatusWithAuthUser(res.data.status);
-        setCountFollower(res.data.countFollower)
-        setCountFollowing(res.data.countFollowing)
+        setStatusWithAuthUser(res.data.status)
+        setFollower(res.data.follower)
+        setFollowing(res.data.following)
+        // setFollowList(res.data.follows)
       })
       .catch((err) => console.log(err));
   }, [profileId]);
+
   return (
     <div className="flex flex-1 flex-col items-center justify-between">
       {profileUser ? (
@@ -31,8 +33,9 @@ export default function ProfilePage() {
             profileUser={profileUser} 
             statusWithAuthUser={statusWithAuthUser} 
             setStatusWithAuthUser={setStatusWithAuthUser} 
-            countFollower={countFollower}
-            countFollowing={countFollowing}
+            follower={follower}
+            following={following}
+            // followList={followList}
             />
           <ProfileContent />
         </>

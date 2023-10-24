@@ -1,10 +1,32 @@
-export default function FollowInfo({countFollower, countFollowing}) {
+import { useState } from "react";
+import FollowersList from "./FollowersList";
+import FollowingList from "./FollowingList";
+import Modal from "../../components/Modal";
 
-    return (
-        <div className="flex justify-between ">
-            <div>0 Posts</div>
-            <div className="cursor-pointer">{countFollower} Followers</div>
-            <div className="cursor-pointer">{countFollowing} Following</div>
+export default function FollowInfo({ follower, following }) {
+  const [isOpenFollower, setIsOpenFollower] = useState(false);
+  const [isOpenFollowing, setIsOpenFollowing] = useState(false);
+
+  return (
+    <div className="flex justify-between ">
+      <div>0 Posts</div>
+      <div>
+        <div className="cursor-pointer" onClick={() => setIsOpenFollower(true)}>
+          {follower.length} Followers
         </div>
-    )
-};
+        <Modal title="Followers" open={isOpenFollower} onClose={() => setIsOpenFollower(false)} >
+          <FollowersList follower={follower} onClose={() => setIsOpenFollower(false)}/>
+        </Modal>
+      </div>
+
+      <div>
+        <div className="cursor-pointer" onClick={() => setIsOpenFollowing(true)}>
+          {following.length} Following
+        </div>
+        <Modal title="Following" open={isOpenFollowing} onClose={() => setIsOpenFollowing(false)}>
+          <FollowingList following={following} onClose={() => setIsOpenFollowing(false)}/>
+        </Modal>
+      </div>
+    </div>
+  );
+}

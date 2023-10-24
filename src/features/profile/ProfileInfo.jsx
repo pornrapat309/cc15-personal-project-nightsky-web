@@ -1,7 +1,7 @@
 import Avatar from "../../components/Avatar";
 import UserInfo from "./UserInfo";
 
-export default function ProfileInfo({profileUser, statusWithAuthUser, setStatusWithAuthUser, countFollower, countFollowing}) {
+export default function ProfileInfo({profileUser, statusWithAuthUser, setStatusWithAuthUser, follower, following }) {
 
   return (
     <div className="flex justify-center gap-20 w-full py-6">
@@ -10,8 +10,9 @@ export default function ProfileInfo({profileUser, statusWithAuthUser, setStatusW
         profileUser={profileUser} 
         statusWithAuthUser={statusWithAuthUser} 
         setStatusWithAuthUser={setStatusWithAuthUser}
-        countFollower={countFollower}
-        countFollowing={countFollowing}
+        follower={follower}
+        following={following}
+        // followList={followList}
         />
     </div>
   );

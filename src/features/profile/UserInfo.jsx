@@ -1,11 +1,11 @@
-import AuthAction from "./AuthAction";
 import FollowInfo from "./FollowInfo";
+import AuthAction from "./AuthAction";
 import UnknownAction from "./UnknownAction";
 import FollowingAction from "./FollowingAction";
 import FollowerAction from "./FollowerAction";
 import RelationshipAction from "./RelationshipAction";
 
-export default function UserInfo({ profileUser, statusWithAuthUser, setStatusWithAuthUser, countFollower, countFollowing }) {
+export default function UserInfo({ profileUser, statusWithAuthUser, setStatusWithAuthUser, follower, following }) {
 
     const mappingObj = {
         'AUTH_USER': <AuthAction />,
@@ -22,8 +22,9 @@ export default function UserInfo({ profileUser, statusWithAuthUser, setStatusWit
         {mappingObj[statusWithAuthUser]}
       </div>
       <FollowInfo 
-        countFollower={countFollower}
-        countFollowing={countFollowing}
+        follower={follower}
+        following={following}
+        setStatusWithAuthUser={setStatusWithAuthUser}
       />
       <div>{profileUser.fullName}</div>
     </div>
