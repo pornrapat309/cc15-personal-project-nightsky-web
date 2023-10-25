@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import MenuProfile from "./MenuProfile";
 import Dropdown from "./Dropdown";
 import { useAuth } from "../hooks/use-auth";
+import MenuCreate from "./MenuCreate";
 
 export default function Menu() {
   const { pathname } = useLocation();
@@ -12,7 +13,7 @@ export default function Menu() {
   const {authUser} = useAuth();
 
   return (
-    <div className="px-3 flex flex-col justify-between">
+    <div className="px-3 flex flex-col justify-between gap-3">
       <MenuItem
         to="/"
         Icon={PiHouseFill}
@@ -21,7 +22,7 @@ export default function Menu() {
       />
       <Dropdown />
       <MenuItem Icon={AiOutlineStar} title="Notification" />
-      <MenuItem Icon={AiOutlinePlusCircle} title="Create" />
+      <MenuCreate Icon={AiOutlinePlusCircle} title="Create" />
       <MenuProfile active={pathname === `/profile/${authUser.id}`} />
     </div>
   );

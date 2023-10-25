@@ -7,7 +7,7 @@ export default function Modal({ title, children, maxWight = 27, open, onClose}) 
           <div className="fixed inset-0 z-30">
             <div className="flex justify-center items-center min-h-full p-4">
               <div
-                className="bg-blue-950 rounded-lg w-full shadow-2xl border"
+                className="bg-blue-950 text-white rounded-lg w-full shadow-2xl border"
                 style={{ maxWidth: `${maxWight}rem` }}
               >
                 <div className="flex justify-center p-6 border-b">

@@ -26,7 +26,7 @@ export default function ProfilePage() {
   }, [profileId]);
 
   return (
-    <div className="flex flex-1 flex-col items-center justify-between">
+    <div className="flex flex-1 flex-col items-center justify-between h-screen">
       {profileUser ? (
         <>
           <ProfileInfo 
@@ -35,7 +35,6 @@ export default function ProfilePage() {
             setStatusWithAuthUser={setStatusWithAuthUser} 
             follower={follower}
             following={following}
-            // followList={followList}
             />
           <ProfileContent />
         </>

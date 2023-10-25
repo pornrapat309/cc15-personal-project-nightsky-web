@@ -2,8 +2,6 @@ import { useRef } from "react";
 
 export default function EditAvatarForm({setFile, onClose}) {
 
-  
-
     const inputEl = useRef(null);
   return (
     <div className="font-semibold cursor-pointer">
