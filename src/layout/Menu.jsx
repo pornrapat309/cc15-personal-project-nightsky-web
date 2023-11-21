@@ -10,10 +10,10 @@ import MenuCreate from "./MenuCreate";
 export default function Menu() {
   const { pathname } = useLocation();
 
-  const {authUser} = useAuth();
+  const { authUser } = useAuth();
 
   return (
-    <div className="px-3 flex flex-col justify-between gap-3">
+    <div className="px-3 flex flex-col justify-between gap-6">
       <MenuItem
         to="/"
         Icon={PiHouseFill}

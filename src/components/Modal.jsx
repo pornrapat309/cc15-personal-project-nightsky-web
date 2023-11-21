@@ -1,4 +1,10 @@
-export default function Modal({ title, children, maxWight = 27, open, onClose}) {
+export default function Modal({
+  title,
+  children,
+  maxWight = 27,
+  open,
+  onClose,
+}) {
   return (
     <>
       {open && (
@@ -14,7 +20,10 @@ export default function Modal({ title, children, maxWight = 27, open, onClose}) 
                   <div className="font-semibold text-xl">{title}</div>
                 </div>
                 <div>{children}</div>
-                <div className="flex justify-center text-sm cursor-pointer p-3 border-t" onClick={onClose}>
+                <div
+                  className="flex justify-center text-sm cursor-pointer p-3 border-t hover:bg-secondary"
+                  onClick={onClose}
+                >
                   Cancel
                 </div>
               </div>

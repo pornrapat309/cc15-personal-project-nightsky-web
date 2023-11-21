@@ -1,10 +1,12 @@
 import axios from "../../config/axios";
 import { useState, useRef } from "react";
 import { HiPhoto } from "react-icons/hi2";
+import Loading from "../../components/Loading";
 
-export default function CreatePost() {
+export default function CreatePost({ onClose }) {
   const [file, setFile] = useState(null);
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
   const fileEl = useRef(null);
 
   const handleSubmitPost = async (e) => {
@@ -17,14 +19,19 @@ export default function CreatePost() {
       if (message) {
         formData.append("message", message);
       }
+      setLoading(true);
       await axios.post("/post", formData);
+      onClose();
     } catch (err) {
       console.log(err);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div>
+      {loading && <Loading />}
       <div className="flex justify-between h-80">
         <div
           className="flex flex-1 flex-col justify-center items-center border border-r cursor-pointer  hover:bg-blue-900 overflow-hidden"
@@ -63,7 +70,7 @@ export default function CreatePost() {
         </div>
       </div>
       <div
-        className="flex justify-center border-t text-base font-bold min-w-full text-blue-500 p-3 cursor-pointer"
+        className="flex justify-center border-t text-base font-bold min-w-full text-blue-500 p-3 cursor-pointer hover:bg-secondary"
         onClick={handleSubmitPost}
       >
         Post
