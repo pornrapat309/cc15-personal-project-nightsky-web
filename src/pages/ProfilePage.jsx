@@ -29,6 +29,7 @@ export default function ProfilePage() {
       .get("/post/following")
       .then((res) => {
         setGetAllPosts(res.data.posts);
+
         console.log(res.data.posts);
       })
       .catch((err) => {
@@ -36,8 +37,14 @@ export default function ProfilePage() {
       });
   }, []);
 
+  console.log(getAllPosts);
+  const getPostByUserId = getAllPosts.filter(
+    (item) => item.userId === +profileId
+  );
+  console.log("ee", getPostByUserId);
+
   return (
-    <div className="flex flex-1 flex-col items-center justify-between h-screen">
+    <div className="flex flex-col items-center h-screen">
       {profileUser ? (
         <>
           <div>
@@ -49,13 +56,14 @@ export default function ProfilePage() {
               following={following}
             />
           </div>
-          <div>
-            {getAllPosts.map((el) => (
-              <ProfileContent
-                profileUser={profileUser}
-                key={el.id}
-                postObj={el}
-              />
+          <div className="grid grid-cols-12 w-full">
+            {getPostByUserId.map((el, index) => (
+              <div
+                key={index}
+                className="grid col-span-12 sm:col-span-6 lg:col-span-4 gap-2 "
+              >
+                <ProfileContent profileUser={profileUser} postObj={el} />
+              </div>
             ))}
           </div>
         </>
