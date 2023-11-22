@@ -3,13 +3,17 @@ import FollowersList from "./FollowersList";
 import FollowingList from "./FollowingList";
 import Modal from "../../components/Modal";
 
-export default function FollowInfo({ follower, following }) {
+export default function FollowInfo({
+  follower,
+  following,
+  getPostByRelationship,
+}) {
   const [isOpenFollower, setIsOpenFollower] = useState(false);
   const [isOpenFollowing, setIsOpenFollowing] = useState(false);
 
   return (
     <div className="flex justify-between ">
-      <div>0 Posts</div>
+      <div>{getPostByRelationship.length} Posts</div>
       <div>
         <div className="cursor-pointer" onClick={() => setIsOpenFollower(true)}>
           {follower.length} Followers

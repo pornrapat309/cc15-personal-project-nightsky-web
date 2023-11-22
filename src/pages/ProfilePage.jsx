@@ -9,7 +9,8 @@ export default function ProfilePage() {
   const [statusWithAuthUser, setStatusWithAuthUser] = useState("");
   const [follower, setFollower] = useState([]);
   const [following, setFollowing] = useState([]);
-  const [getAllPosts, setGetAllPosts] = useState([]);
+  // const [getAllPosts, setGetAllPosts] = useState([]);
+  const [getRelationshipPost, setGetRelationshipPost] = useState([]);
   const { profileId } = useParams();
 
   useEffect(() => {
@@ -26,22 +27,36 @@ export default function ProfilePage() {
 
   useEffect(() => {
     axios
-      .get("/post/following")
+      .get("/post/getAllPosts")
       .then((res) => {
-        setGetAllPosts(res.data.posts);
-
-        console.log(res.data.posts);
+        setGetRelationshipPost(res.data.posts);
+        console.log("ss", res.data.posts);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
-  console.log(getAllPosts);
-  const getPostByUserId = getAllPosts?.filter(
+  const getPostByRelationship = getRelationshipPost?.filter(
     (item) => item.userId === +profileId
   );
-  console.log("ee", getPostByUserId);
+
+  // useEffect(() => {
+  //   axios
+  //     .get("/post/following")
+  //     .then((res) => {
+  //       setGetAllPosts(res.data.posts);
+
+  //       console.log(res.data.posts);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
+
+  // const getPostByUserId = getAllPosts?.filter(
+  //   (item) => item.userId === +profileId
+  // );
 
   return (
     <div className="flex flex-col items-center h-screen">
@@ -54,10 +69,11 @@ export default function ProfilePage() {
               setStatusWithAuthUser={setStatusWithAuthUser}
               follower={follower}
               following={following}
+              getPostByRelationship={getPostByRelationship}
             />
           </div>
           <div className="grid grid-cols-12 w-full">
-            {getPostByUserId.map((el, index) => (
+            {getPostByRelationship.map((el, index) => (
               <div
                 key={index}
                 className="grid col-span-12 sm:col-span-6 lg:col-span-4 gap-2 "

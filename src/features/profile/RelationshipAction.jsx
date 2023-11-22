@@ -13,6 +13,8 @@ export default function RelationshipAction({ setStatusWithAuthUser }) {
       setStatusWithAuthUser("FOLLOWER");
     } catch (err) {
       console.log(err);
+    } finally {
+      window.location.reload();
     }
   };
 

@@ -13,6 +13,8 @@ export default function FollowingAction({ setStatusWithAuthUser }) {
       setStatusWithAuthUser("UNKNOWN");
     } catch (err) {
       console.log(err);
+    } finally {
+      window.location.reload();
     }
   };
 

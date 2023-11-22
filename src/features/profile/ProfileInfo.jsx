@@ -7,6 +7,7 @@ export default function ProfileInfo({
   setStatusWithAuthUser,
   follower,
   following,
+  getPostByRelationship,
 }) {
   return (
     <div className="flex justify-center gap-20 w-full py-6">
@@ -17,6 +18,7 @@ export default function ProfileInfo({
         setStatusWithAuthUser={setStatusWithAuthUser}
         follower={follower}
         following={following}
+        getPostByRelationship={getPostByRelationship}
       />
     </div>
   );

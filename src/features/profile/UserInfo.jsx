@@ -5,15 +5,25 @@ import FollowingAction from "./FollowingAction";
 import FollowerAction from "./FollowerAction";
 import RelationshipAction from "./RelationshipAction";
 
-export default function UserInfo({ profileUser, statusWithAuthUser, setStatusWithAuthUser, follower, following }) {
-
-    const mappingObj = {
-        'AUTH_USER': <AuthAction />,
-        'UNKNOWN': <UnknownAction setStatusWithAuthUser={setStatusWithAuthUser}/>,
-        'FOLLOWING': <FollowingAction setStatusWithAuthUser={setStatusWithAuthUser}/>,
-        'FOLLOWER': <FollowerAction setStatusWithAuthUser={setStatusWithAuthUser}/>,
-        'INRELATIONSHIP': <RelationshipAction setStatusWithAuthUser={setStatusWithAuthUser}/>
-    };
+export default function UserInfo({
+  profileUser,
+  statusWithAuthUser,
+  setStatusWithAuthUser,
+  follower,
+  following,
+  getPostByRelationship,
+}) {
+  const mappingObj = {
+    AUTH_USER: <AuthAction />,
+    UNKNOWN: <UnknownAction setStatusWithAuthUser={setStatusWithAuthUser} />,
+    FOLLOWING: (
+      <FollowingAction setStatusWithAuthUser={setStatusWithAuthUser} />
+    ),
+    FOLLOWER: <FollowerAction setStatusWithAuthUser={setStatusWithAuthUser} />,
+    INRELATIONSHIP: (
+      <RelationshipAction setStatusWithAuthUser={setStatusWithAuthUser} />
+    ),
+  };
 
   return (
     <div className="flex flex-col justify-evenly w-80 text-white">
@@ -21,10 +31,11 @@ export default function UserInfo({ profileUser, statusWithAuthUser, setStatusWit
         <div className="text-xl">{profileUser.username}</div>
         {mappingObj[statusWithAuthUser]}
       </div>
-      <FollowInfo 
+      <FollowInfo
         follower={follower}
         following={following}
         setStatusWithAuthUser={setStatusWithAuthUser}
+        getPostByRelationship={getPostByRelationship}
       />
       <div>{profileUser.fullName}</div>
     </div>
