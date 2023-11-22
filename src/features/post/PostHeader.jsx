@@ -4,8 +4,13 @@ import { BsDot, BsThreeDots } from "react-icons/bs";
 import Avatar from "../../components/Avatar";
 import Modal from "../../components/Modal";
 
-export default function PostHeader({ postObj }) {
+export default function PostHeader({ postObj, deletePost }) {
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleClickDelete = () => {
+    deletePost(postObj.id);
+  };
+
   return (
     <>
       <div className="flex gap-3">
@@ -28,7 +33,10 @@ export default function PostHeader({ postObj }) {
       </div>
       <Modal title="Manage post" open={isOpen} onClose={() => setIsOpen(false)}>
         <div onClose={() => setIsOpen(false)}>
-          <div className="flex justify-center border-b p-3 border-gray-400 min-w-full text-red-500 font-semibold cursor-pointer hover:bg-secondary">
+          <div
+            className="flex justify-center border-b p-3 border-gray-400 min-w-full text-red-500 font-semibold cursor-pointer hover:bg-secondary"
+            onClick={handleClickDelete}
+          >
             Delete
           </div>
           <div className="flex justify-center border-b p-3 border-gray-400 min-w-full cursor-pointer hover:bg-secondary">

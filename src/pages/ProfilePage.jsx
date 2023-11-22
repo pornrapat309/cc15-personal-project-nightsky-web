@@ -38,7 +38,7 @@ export default function ProfilePage() {
   }, []);
 
   console.log(getAllPosts);
-  const getPostByUserId = getAllPosts.filter(
+  const getPostByUserId = getAllPosts?.filter(
     (item) => item.userId === +profileId
   );
   console.log("ee", getPostByUserId);
