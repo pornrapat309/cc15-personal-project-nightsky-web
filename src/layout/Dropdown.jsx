@@ -30,16 +30,16 @@ export default function Dropdown() {
         <span className="px-4">Search</span>
       </div>
       {isOpen && (
-        <div className="absolute grid grid-2 w-[28rem] h-full text-gray-200 top-0 left-64 rounded-r-3xl bg-prussianBlue border-r-[0.05rem] border-r-gray-600">
+        <div className="absolute grid grid-2 w-[28rem] h-full text-gray-200 top-0 left-64 rounded-r-3xl bg-primary border-r-[0.05rem] border-r-gray-600">
           <div className="relative flex flex-col justify-evenly items-center border-b-[0.05rem] border-b-gray-600">
             <span className="flex self-start row-span-1 px-8 text-3xl font-semibold">
               Search
             </span>
-            <CiCircleRemove className="absolute top-32 right-10 w-6 h-6 cursor-pointer text-gray-600" />
+            <CiCircleRemove className="absolute top-[9.4rem] right-10 w-6 h-6 cursor-pointer text-gray-600" />
             <input
               type="text"
               placeholder="Search"
-              className="w-96 h-10 p-2 rounded-lg bg-gray-300"
+              className="w-96 h-10 p-2 rounded-lg bg-gray-300 text-black"
             />
           </div>
           <div className="row-span-3">Search content</div>

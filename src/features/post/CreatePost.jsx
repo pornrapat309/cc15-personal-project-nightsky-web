@@ -34,7 +34,7 @@ export default function CreatePost({ onClose }) {
       {loading && <Loading />}
       <div className="flex justify-between h-80">
         <div
-          className="flex flex-1 flex-col justify-center items-center border border-r cursor-pointer  hover:bg-blue-900 overflow-hidden"
+          className="flex flex-1 flex-col justify-center items-center border border-r cursor-pointer hover:bg-secondary overflow-hidden"
           onClick={() => fileEl.current.click()}
         >
           {file ? (

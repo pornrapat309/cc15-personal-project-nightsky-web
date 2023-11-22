@@ -14,17 +14,34 @@ export default function FollowInfo({ follower, following }) {
         <div className="cursor-pointer" onClick={() => setIsOpenFollower(true)}>
           {follower.length} Followers
         </div>
-        <Modal title="Followers" open={isOpenFollower} onClose={() => setIsOpenFollower(false)} >
-          <FollowersList follower={follower} onClose={() => setIsOpenFollower(false)}/>
+        <Modal
+          title="Followers"
+          open={isOpenFollower}
+          onClose={() => setIsOpenFollower(false)}
+        >
+          <FollowersList
+            follower={follower}
+            onClose={() => setIsOpenFollower(false)}
+          />
         </Modal>
       </div>
 
       <div>
-        <div className="cursor-pointer" onClick={() => setIsOpenFollowing(true)}>
+        <div
+          className="cursor-pointer"
+          onClick={() => setIsOpenFollowing(true)}
+        >
           {following.length} Following
         </div>
-        <Modal title="Following" open={isOpenFollowing} onClose={() => setIsOpenFollowing(false)}>
-          <FollowingList following={following} onClose={() => setIsOpenFollowing(false)}/>
+        <Modal
+          title="Following"
+          open={isOpenFollowing}
+          onClose={() => setIsOpenFollowing(false)}
+        >
+          <FollowingList
+            following={following}
+            onClose={() => setIsOpenFollowing(false)}
+          />
         </Modal>
       </div>
     </div>

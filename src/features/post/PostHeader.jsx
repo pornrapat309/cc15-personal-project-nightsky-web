@@ -4,17 +4,17 @@ import { BsDot, BsThreeDots } from "react-icons/bs";
 import Avatar from "../../components/Avatar";
 import Modal from "../../components/Modal";
 
-export default function PostHeader() {
+export default function PostHeader({ postObj }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <div className="flex gap-3">
-        <Link to="/profile/aaa">
-          <Avatar className="h-10" />
+        <Link to={`/profile/${postObj.user.id}`}>
+          <Avatar src={postObj.user.profileImage} className="h-10" />
         </Link>
         <div className="flex items-center gap-1 flex-1">
-          <Link to="/profile/aaa" className="text-white">
-            Johnnnnn
+          <Link to={`/profile/${postObj.user.id}`} className="text-white">
+            {postObj.user.username}
           </Link>
           <BsDot className="fill-gray-400" />
           <span className="text-gray-300">1d</span>
