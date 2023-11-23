@@ -21,7 +21,7 @@ export default function Menu() {
         active={pathname === "/"}
       />
       <Dropdown />
-      <MenuItem Icon={AiOutlineStar} title="Notification" />
+      {/* <MenuItem Icon={AiOutlineStar} title="Notification" /> */}
       <MenuCreate Icon={AiOutlinePlusCircle} title="Create" />
       <MenuProfile active={pathname === `/profile/${authUser.id}`} />
     </div>

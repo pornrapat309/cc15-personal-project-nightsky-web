@@ -3,11 +3,14 @@ import { IoChatbubbleOutline } from "react-icons/io5";
 import { TiStarFullOutline } from "react-icons/ti";
 import { useAuth } from "../../hooks/use-auth";
 import axios from "../../config/axios";
+import Modal from "../../components/Modal";
+import CreateComment from "./CreateComment";
 
 export default function PostContent({ postObj, image, totalLike }) {
   const postId = postObj.id;
   const { authUser } = useAuth();
   const [likes, setLikes] = useState(postObj.likes);
+  const [openModal, setOpenModal] = useState(false);
 
   const isLiked = likes.find((el) => el.userId === authUser.id);
 
@@ -26,17 +29,32 @@ export default function PostContent({ postObj, image, totalLike }) {
   return (
     <div className="py-3 flex flex-col gap-2 text-white">
       {image && (
-        <div className="-mx-4 h-[22rem]">
+        <div className="-mx-4">
           <img src={image} alt="post" className="w-full h-full" />
         </div>
       )}
       <div className="flex gap-3">
-        <TiStarFullOutline
-          className="w-7 h-7 cursor-pointer self-center"
-          color={isLiked ? "yellow" : "gray"}
-          onClick={handleClickLike}
-        />
-        <IoChatbubbleOutline className="w-[1.35rem] h-[1.35rem] cursor-pointer self-center" />
+        <div className="w-7 h-7 cursor-pointer self-center">
+          <TiStarFullOutline
+            className="w-full h-full"
+            color={isLiked ? "yellow" : "gray"}
+            onClick={handleClickLike}
+          />
+        </div>
+        <div className="w-[1.4rem] h-[1.4rem] cursor-pointer self-center">
+          <IoChatbubbleOutline
+            className="w-full h-full"
+            onClick={() => setOpenModal(true)}
+          />
+          <Modal
+            maxWight={40}
+            title="Comment"
+            open={openModal}
+            onClose={() => setOpenModal(false)}
+          >
+            <CreateComment image={image} />
+          </Modal>
+        </div>
       </div>
       <div>{likes.length} likes</div>
     </div>

@@ -6,6 +6,7 @@ import Avatar from "../../components/Avatar";
 import Modal from "../../components/Modal";
 import { useAuth } from "../../hooks/use-auth";
 import EditPost from "../../features/post/EditPost";
+import formatTimeAgo from "../../utils/time-ago";
 
 export default function PostHeader({ postObj, deletePost }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,7 +30,9 @@ export default function PostHeader({ postObj, deletePost }) {
             {postObj.user.username}
           </Link>
           <BsDot className="fill-gray-400" />
-          <span className="text-gray-300">1d</span>
+          <span className="text-gray-300">
+            {formatTimeAgo(postObj.createdAt)}
+          </span>
         </div>
         {isAuthUser ? (
           <div
