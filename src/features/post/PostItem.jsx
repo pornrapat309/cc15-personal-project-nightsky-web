@@ -8,6 +8,7 @@ export default function PostItem({ postObj, deletePost }) {
       <PostHeader postObj={postObj} deletePost={deletePost} />
       <PostContent
         postObj={postObj}
+        postId={postObj.id}
         image={postObj.image}
         totalLike={postObj.totalLike}
       />

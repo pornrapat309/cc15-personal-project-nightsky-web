@@ -1,7 +1,3 @@
-import { useState } from "react";
-import { useAuth } from "../../hooks/use-auth";
-import axios from "../../config/axios";
-
 export default function PostFooter({ postObj }) {
   return (
     <div className="flex flex-col gap-2 text-white">

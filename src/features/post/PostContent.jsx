@@ -6,8 +6,7 @@ import axios from "../../config/axios";
 import Modal from "../../components/Modal";
 import CreateComment from "./CreateComment";
 
-export default function PostContent({ postObj, image, totalLike }) {
-  const postId = postObj.id;
+export default function PostContent({ postObj, postId, image, totalLike }) {
   const { authUser } = useAuth();
   const [likes, setLikes] = useState(postObj.likes);
   const [openModal, setOpenModal] = useState(false);
@@ -52,7 +51,11 @@ export default function PostContent({ postObj, image, totalLike }) {
             open={openModal}
             onClose={() => setOpenModal(false)}
           >
-            <CreateComment image={image} />
+            <CreateComment
+              image={image}
+              postId={postId}
+              onClose={() => setOpenModal(false)}
+            />
           </Modal>
         </div>
       </div>
