@@ -24,7 +24,7 @@ export default function HomePage() {
         console.log(err);
       });
   }, []);
-  console.log("ww", getFollowingPosts);
+  console.log(getFollowingPosts);
   return (
     <div className="max-w-xl mx-auto px-8 py-6 flex flex-col">
       <PostList getFollowingPosts={getFollowingPosts} deletePost={deletePost} />

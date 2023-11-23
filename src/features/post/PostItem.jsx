@@ -12,7 +12,7 @@ export default function PostItem({ postObj, deletePost }) {
         image={postObj.image}
         totalLike={postObj.totalLike}
       />
-      <PostFooter postObj={postObj} />
+      <PostFooter postObj={postObj} image={postObj.image} postId={postObj.id} />
     </div>
   );
 }
