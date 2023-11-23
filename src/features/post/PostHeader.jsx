@@ -16,7 +16,6 @@ export default function PostHeader({ postObj, deletePost }) {
 
   const handleClickDelete = () => {
     deletePost(postObj.id);
-    toast.warning("Post deleted!");
   };
 
   return (
@@ -49,7 +48,10 @@ export default function PostHeader({ postObj, deletePost }) {
         <div onClose={() => setIsOpen(false)}>
           <div
             className="flex justify-center border-b p-3 border-gray-400 min-w-full text-red-500 font-semibold cursor-pointer hover:bg-secondary"
-            onClick={handleClickDelete}
+            onClick={() => {
+              handleClickDelete();
+              setIsOpen(false);
+            }}
           >
             Delete
           </div>

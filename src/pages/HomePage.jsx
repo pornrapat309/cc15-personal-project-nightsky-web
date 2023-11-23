@@ -9,8 +9,11 @@ export default function HomePage() {
     try {
       await axios.delete(`/post/${postId}`);
       setGetFollowingPosts(getAllPosts.filter((el) => el.id !== postId));
+      // toast.warning("Post deleted!");
     } catch (err) {
       console.log(err);
+    } finally {
+      window.location.reload();
     }
   };
 

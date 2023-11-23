@@ -40,23 +40,6 @@ export default function ProfilePage() {
     (item) => item.userId === +profileId
   );
 
-  // useEffect(() => {
-  //   axios
-  //     .get("/post/following")
-  //     .then((res) => {
-  //       setGetAllPosts(res.data.posts);
-
-  //       console.log(res.data.posts);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
-
-  // const getPostByUserId = getAllPosts?.filter(
-  //   (item) => item.userId === +profileId
-  // );
-
   return (
     <div className="flex flex-col items-center h-screen">
       {profileUser ? (

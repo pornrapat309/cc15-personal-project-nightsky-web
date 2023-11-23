@@ -11,7 +11,7 @@ export default function PostFooter({ postObj, image }) {
         {postObj.message && <div>{postObj.message}</div>}
       </div>
       <div className="cursor-pointer" onClick={() => setOpenModal(true)}>
-        View all {postObj.totalComment} comments
+        View all {postObj.comments.length} comments
       </div>
       <Modal
         maxWight={40}
