@@ -26,6 +26,7 @@ export default function CreatePost({ onClose }) {
       console.log(err);
     } finally {
       setLoading(false);
+      window.location.reload();
     }
   };
 
