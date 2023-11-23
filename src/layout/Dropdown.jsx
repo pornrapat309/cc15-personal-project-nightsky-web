@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { CiCircleRemove } from "react-icons/ci";
+import SearchList from "../components/SearchList";
 
 export default function Dropdown() {
   const [isOpen, setIsOpen] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
 
   const dropDownEl = useRef(null);
 
@@ -30,19 +32,32 @@ export default function Dropdown() {
         <span className="px-4">Search</span>
       </div>
       {isOpen && (
-        <div className="absolute grid grid-2 w-[28rem] h-full text-gray-200 top-0 left-64 rounded-r-3xl bg-primary border-r-[0.05rem] border-r-gray-600">
-          <div className="relative flex flex-col justify-evenly items-center border-b-[0.05rem] border-b-gray-600">
-            <span className="flex self-start row-span-1 px-8 text-3xl font-semibold">
+        <div className="absolute p-10 w-[28rem] h-full text-gray-200 top-0 left-64 rounded-r-3xl bg-primary border-r-[0.05rem] border-r-gray-600">
+          <div className="relative flex flex-col items-center">
+            <span className="flex self-start pb-6 px-8 text-3xl font-semibold">
               Search
             </span>
-            <CiCircleRemove className="absolute top-[9.4rem] right-10 w-6 h-6 cursor-pointer text-gray-600" />
-            <input
-              type="text"
-              placeholder="Search"
-              className="w-96 h-10 p-2 rounded-lg bg-gray-300 text-black"
+            <div className="relative">
+              <CiCircleRemove
+                className="absolute top-2 right-2 w-6 h-6 cursor-pointer text-gray-600"
+                onClick={() => setSearchInput("")}
+              />
+              <input
+                type="text"
+                placeholder="Search"
+                className="w-96 h-10 p-2 rounded-lg bg-gray-300 text-black"
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="overflow-auto">
+            <SearchList
+              searchInput={searchInput}
+              isOpen={isOpen}
+              setIsOpen={setIsOpen}
             />
           </div>
-          <div className="row-span-3">Search content</div>
         </div>
       )}
     </div>

@@ -30,7 +30,6 @@ export default function ProfilePage() {
       .get("/post/getAllPosts")
       .then((res) => {
         setGetRelationshipPost(res.data.posts);
-        console.log("ss", res.data.posts);
       })
       .catch((err) => {
         console.log(err);
