@@ -9,7 +9,6 @@ export default function ProfilePage() {
   const [statusWithAuthUser, setStatusWithAuthUser] = useState("");
   const [follower, setFollower] = useState([]);
   const [following, setFollowing] = useState([]);
-  // const [getAllPosts, setGetAllPosts] = useState([]);
   const [getRelationshipPost, setGetRelationshipPost] = useState([]);
   const { profileId } = useParams();
 
